@@ -14,7 +14,7 @@
 </main>
 <script>
 const DEFAULT_PRODUCTS=[{"id": 1, "name": "Crochet Flower Bouquet", "category": "Bouquets", "price": 899, "image": "images/bouquet.svg", "description": "A handmade crochet flower bouquet that never wilts.", "badge": "BESTSELLER"}, {"id": 2, "name": "Little Crochet Duck", "category": "Amigurumi", "price": 499, "image": "images/duck.svg", "description": "A tiny handmade crochet duck, perfect for gifting.", "badge": ""}, {"id": 3, "name": "Tulip Keychain", "category": "Keychains", "price": 249, "image": "images/tulip-keychain.svg", "description": "A cute handmade tulip keychain for your keys or bag.", "badge": "POPULAR"}, {"id": 4, "name": "Mini Crochet Teddy", "category": "Amigurumi", "price": 599, "image": "images/teddy.svg", "description": "A soft little crochet teddy, handmade with love.", "badge": ""}, {"id": 5, "name": "Cute Phone Charm", "category": "Phone Charms", "price": 299, "image": "images/phone-charm.svg", "description": "A cute crochet charm to personalise your phone.", "badge": ""}, {"id": 6, "name": "Mirror Charm", "category": "Charms", "price": 399, "image": "images/mirror-charm.svg", "description": "A handmade crochet rear-view mirror charm.", "badge": ""}];
-const PASSWORD="admin123";
+const PASSWORD="Welcome@1900";
 function readProducts(){try{const value=JSON.parse(localStorage.getItem("ywl_products")||"null");return Array.isArray(value)?value:DEFAULT_PRODUCTS.map(p=>({...p}));}catch(e){return DEFAULT_PRODUCTS.map(p=>({...p}));}}
 let products=readProducts();
 const money=n=>"₹"+Number(n).toLocaleString("en-IN");

@@ -1,20 +1,15 @@
 const DEFAULT_PRODUCTS=[
-{id:1,name:"Crochet Flower Bouquet",category:"Bouquets",price:899,image:"images/bouquet.svg",description:"A handmade crochet flower bouquet that never wilts.",badge:"BESTSELLER"},
-{id:2,name:"Little Crochet Duck",category:"Amigurumi",price:499,image:"images/duck.svg",description:"A tiny handmade crochet duck, perfect for gifting."},
-{id:3,name:"Tulip Keychain",category:"Keychains",price:249,image:"images/tulip-keychain.svg",description:"A cute handmade tulip keychain for your keys or bag.",badge:"POPULAR"},
-{id:4,name:"Mini Crochet Teddy",category:"Amigurumi",price:599,image:"images/teddy.svg",description:"A soft little crochet teddy, handmade with love."},
-{id:5,name:"Cute Phone Charm",category:"Phone Charms",price:299,image:"images/phone-charm.svg",description:"A cute crochet charm to personalise your phone."},
-{id:6,name:"Mirror Charm",category:"Charms",price:399,image:"images/mirror-charm.svg",description:"A handmade crochet rear-view mirror charm."}
+{id:7,name:"Crochet Lily Stem",category:"Other",price:256,image:"images/lily-stem.jpg",description:"Flower stem",badge:"BESTSELLER"}
 ];
 
-const WA_NUMBER="919915593966"; // CHANGE THIS to the business WhatsApp number, country code + number without +.
-const ADMIN_PASSWORD="Welcome@1900"; // CHANGE THIS before publishing.
+const WA_NUMBER="919999999999"; // CHANGE THIS to the business WhatsApp number, country code + number without +.
+const ADMIN_PASSWORD="admin123"; // CHANGE THIS before publishing.
 
 function readStored(key, fallback){
  try { const raw=localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; }
  catch(err){ console.warn(`Could not read ${key}; using defaults.`, err); return fallback; }
 }
-let products=readStored("ywl_products", DEFAULT_PRODUCTS);
+let products=readStored("ywl_products_v2", DEFAULT_PRODUCTS);
 let cart=readStored("ywl_cart", []);
 if(!Array.isArray(products)) products=DEFAULT_PRODUCTS.map(p=>({...p}));
 products=products.filter(p=>p && (typeof p.id==="string"||Number.isFinite(Number(p.id))) && String(p.name||"").trim()).map(p=>({...p,id:p.id, name:String(p.name).trim(), category:String(p.category||"Other"), price:Math.max(0,Number(p.price)||0), image:String(p.image||"images/fallback.svg"), description:String(p.description||""), badge:String(p.badge||"")}));
@@ -26,7 +21,7 @@ let modalProduct=null,modalQty=1;
 const money=n=>"₹"+Number(n).toLocaleString("en-IN");
 const save=()=>{
  try {
-  localStorage.setItem("ywl_products",JSON.stringify(products));
+  localStorage.setItem("ywl_products_v2",JSON.stringify(products));
   localStorage.setItem("ywl_cart",JSON.stringify(cart));
   return true;
  } catch(err) {
@@ -95,10 +90,10 @@ function escapeAttr(s){return escapeHtml(s);}
 renderProducts();renderCart();
 // Update an already-open storefront when the admin changes the catalog in another tab.
 window.addEventListener("storage", event => {
- if(event.key === "ywl_products") { products=readStored("ywl_products", DEFAULT_PRODUCTS); renderProducts(); renderCart(); }
+ if(event.key === "ywl_products") { products=readStored("ywl_products_v2", DEFAULT_PRODUCTS); renderProducts(); renderCart(); }
 });
 window.addEventListener("pageshow", () => {
- products=readStored("ywl_products", DEFAULT_PRODUCTS); if(!Array.isArray(products)) products=DEFAULT_PRODUCTS;
+ products=readStored("ywl_products_v2", DEFAULT_PRODUCTS); if(!Array.isArray(products)) products=DEFAULT_PRODUCTS;
  cart=readStored("ywl_cart", []); if(!Array.isArray(cart)) cart=[];
  renderProducts(); renderCart();
 });

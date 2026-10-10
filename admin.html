@@ -5,7 +5,7 @@
 <div class="announcement">Yarn With Love ♡ — Admin</div>
 <header class="nav"><a class="brand logo-brand" href="index.html"><img src="images/logo.png" alt="Yarn With Love logo"></a><a class="btn" href="index.html">View store</a></header>
 <main class="admin-wrap">
-  <div id="login" class="admin-login"><p class="eyebrow">PRIVATE ADMIN</p><h1>Manage products</h1><p>Default password: <b>admin123</b> — change it in this file before publishing.</p><input id="pass" type="password" placeholder="Admin password"><button class="btn" onclick="login()">Enter admin</button><p id="loginMsg" style="font-size:12px;color:#a65e64;margin-top:12px"></p></div>
+  <div id="login" class="admin-login"><p class="eyebrow">PRIVATE ADMIN</p><h1>Manage products</h1><input id="pass" type="password" placeholder="Admin password"><button class="btn" onclick="login()">Enter admin</button><p id="loginMsg" style="font-size:12px;color:#a65e64;margin-top:12px"></p></div>
   <div id="panel" style="display:none">
     <div class="admin-head"><div><p class="eyebrow">PRODUCT CATALOG</p><h1>Products</h1></div><div><button class="btn" onclick="newProduct()">+ Add product</button> <button class="btn outline" onclick="exportData()">Export JSON</button><label class="btn outline">Import JSON<input hidden type="file" accept=".json" onchange="importData(event)"></label></div></div>
     <div id="adminList"></div>

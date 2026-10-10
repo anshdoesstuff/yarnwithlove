@@ -7,7 +7,7 @@ const DEFAULT_PRODUCTS=[
 {id:6,name:"Mirror Charm",category:"Charms",price:399,image:"images/mirror-charm.svg",description:"A handmade crochet rear-view mirror charm."}
 ];
 
-const WA_NUMBER="919999999999"; // CHANGE THIS to the business WhatsApp number, country code + number without +.
+const WA_NUMBER="919915593966"; // CHANGE THIS to the business WhatsApp number, country code + number without +.
 const ADMIN_PASSWORD="admin123"; // CHANGE THIS before publishing.
 
 function readStored(key, fallback){

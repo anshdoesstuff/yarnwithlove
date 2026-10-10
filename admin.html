@@ -5,7 +5,7 @@
 <div class="announcement">Yarn With Love ♡ — Admin</div>
 <header class="nav"><a class="brand logo-brand" href="index.html"><img src="images/logo.png" alt="Yarn With Love logo"></a><a class="btn" href="index.html">View store</a></header>
 <main class="admin-wrap">
-  <div id="login" class="admin-login"><p class="eyebrow">PRIVATE ADMIN</p><h1>Manage products</h1><input id="pass" type="password" placeholder="Admin password"><button class="btn" onclick="login()">Enter admin</button><p id="loginMsg" style="font-size:12px;color:#a65e64;margin-top:12px"></p></div>
+  <div id="login" class="admin-login"><p class="eyebrow">PRIVATE ADMIN</p><h1>Manage products</h1><p>Default password: <b>admin123</b> — change it in this file before publishing.</p><input id="pass" type="password" placeholder="Admin password"><button class="btn" onclick="login()">Enter admin</button><p id="loginMsg" style="font-size:12px;color:#a65e64;margin-top:12px"></p></div>
   <div id="panel" style="display:none">
     <div class="admin-head"><div><p class="eyebrow">PRODUCT CATALOG</p><h1>Products</h1></div><div><button class="btn" onclick="newProduct()">+ Add product</button> <button class="btn outline" onclick="exportData()">Export JSON</button><label class="btn outline">Import JSON<input hidden type="file" accept=".json" onchange="importData(event)"></label></div></div>
     <div id="adminList"></div>
@@ -13,13 +13,15 @@
   </div>
 </main>
 <script>
-const DEFAULT_PRODUCTS=[{"id": 1, "name": "Crochet Flower Bouquet", "category": "Bouquets", "price": 899, "image": "images/bouquet.svg", "description": "A handmade crochet flower bouquet that never wilts.", "badge": "BESTSELLER"}, {"id": 2, "name": "Little Crochet Duck", "category": "Amigurumi", "price": 499, "image": "images/duck.svg", "description": "A tiny handmade crochet duck, perfect for gifting.", "badge": ""}, {"id": 3, "name": "Tulip Keychain", "category": "Keychains", "price": 249, "image": "images/tulip-keychain.svg", "description": "A cute handmade tulip keychain for your keys or bag.", "badge": "POPULAR"}, {"id": 4, "name": "Mini Crochet Teddy", "category": "Amigurumi", "price": 599, "image": "images/teddy.svg", "description": "A soft little crochet teddy, handmade with love.", "badge": ""}, {"id": 5, "name": "Cute Phone Charm", "category": "Phone Charms", "price": 299, "image": "images/phone-charm.svg", "description": "A cute crochet charm to personalise your phone.", "badge": ""}, {"id": 6, "name": "Mirror Charm", "category": "Charms", "price": 399, "image": "images/mirror-charm.svg", "description": "A handmade crochet rear-view mirror charm.", "badge": ""}];
-const PASSWORD="Welcome@1900";
-function readProducts(){try{const value=JSON.parse(localStorage.getItem("ywl_products")||"null");return Array.isArray(value)?value:DEFAULT_PRODUCTS.map(p=>({...p}));}catch(e){return DEFAULT_PRODUCTS.map(p=>({...p}));}}
+const DEFAULT_PRODUCTS=[
+{id:7,name:"Crochet Lily Stem",category:"Other",price:256,image:"images/lily-stem.jpg",description:"Flower stem",badge:"BESTSELLER"}
+];
+const PASSWORD="admin123";
+function readProducts(){try{const value=JSON.parse(localStorage.getItem("ywl_products_v2")||"null");return Array.isArray(value)?value:DEFAULT_PRODUCTS.map(p=>({...p}));}catch(e){return DEFAULT_PRODUCTS.map(p=>({...p}));}}
 let products=readProducts();
 const money=n=>"₹"+Number(n).toLocaleString("en-IN");
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
-function login(){const p=document.querySelector("#pass").value.trim();if(p===PASSWORD){document.querySelector("#login").style.display="none";document.querySelector("#panel").style.display="block";render();}else document.querySelector("#loginMsg").textContent="Incorrect password. Use admin123 unless you changed it in this file."} document.querySelector("#pass").addEventListener("keydown",e=>{if(e.key==="Enter")login();});
+function login(){const p=document.querySelector("#pass").value.trim();if(p===PASSWORD){document.querySelector("#login").style.display="none";document.querySelector("#panel").style.display="block";render();}else document.querySelector("#loginMsg").textContent="Incorrect password. Please check the admin password in the source code."} document.querySelector("#pass").addEventListener("keydown",e=>{if(e.key==="Enter")login();});
 function render(){
  const list=document.querySelector("#adminList");
  if(!products.length){list.innerHTML='<p class="admin-note">No products yet. Click “Add product” to create your first listing.</p>';return;}
@@ -32,7 +34,7 @@ function edit(i,k,v){
  products[i][k]=v;save();
 }
 function save(){
- try{localStorage.setItem("ywl_products",JSON.stringify(products));document.querySelectorAll('.save-error').forEach(n=>n.remove());return true;}
+ try{localStorage.setItem("ywl_products_v2",JSON.stringify(products));document.querySelectorAll('.save-error').forEach(n=>n.remove());return true;}
  catch(err){alert('Could not save the catalogue. The browser storage may be full; upload a smaller photo.');return false;}
 }
 function upload(i,e){

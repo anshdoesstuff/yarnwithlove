@@ -8,7 +8,7 @@ const DEFAULT_PRODUCTS=[
 ];
 
 const WA_NUMBER="919915593966"; // CHANGE THIS to the business WhatsApp number, country code + number without +.
-const ADMIN_PASSWORD="welcome321"; // CHANGE THIS before publishing.
+const ADMIN_PASSWORD="Welcome@1900"; // CHANGE THIS before publishing.
 
 function readStored(key, fallback){
  try { const raw=localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; }

@@ -16,7 +16,7 @@
 const DEFAULT_PRODUCTS=[
 {id:7,name:"Crochet Lily Stem",category:"Other",price:256,image:"images/lily-stem.jpg",description:"Flower stem",badge:"BESTSELLER"}
 ];
-const PASSWORD="admin123";
+const PASSWORD="welcome321";
 function readProducts(){try{const value=JSON.parse(localStorage.getItem("ywl_products_v2")||"null");return Array.isArray(value)?value:DEFAULT_PRODUCTS.map(p=>({...p}));}catch(e){return DEFAULT_PRODUCTS.map(p=>({...p}));}}
 let products=readProducts();
 const money=n=>"₹"+Number(n).toLocaleString("en-IN");

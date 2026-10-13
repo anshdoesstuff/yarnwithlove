@@ -2,8 +2,8 @@ const DEFAULT_PRODUCTS=[
 {id:7,name:"Crochet Lily Stem",category:"Other",price:256,image:"images/lily-stem.jpg",description:"Flower stem",badge:"BESTSELLER"}
 ];
 
-const WA_NUMBER="919999999999"; // CHANGE THIS to the business WhatsApp number, country code + number without +.
-const ADMIN_PASSWORD="admin123"; // CHANGE THIS before publishing.
+const WA_NUMBER="919915593966"; // CHANGE THIS to the business WhatsApp number, country code + number without +.
+const ADMIN_PASSWORD="welcome321"; // CHANGE THIS before publishing.
 
 function readStored(key, fallback){
  try { const raw=localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; }

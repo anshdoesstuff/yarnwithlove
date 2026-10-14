@@ -15,23 +15,7 @@
 <script>
 const DEFAULT_PRODUCTS=[
 { "id": 7,"name": "Crochet Lily Stem","category": "Other","price": 256,"image": "images/lily-stem.jpg","description": "any colour available","badge": "BESTSELLER"},
-  {"id": 8,
-    "name": "Mini Flower Bouquet (keychain optional)",
-    "category": "Bouquets",
-    "price": 249,
-    "image":"images/minibouquet.jpeg",
-    "description": "customizable colours",
-    "badge": "LIMITED STOCK"
-  },
-  {
-    "id": 9,
-    "name": "Turtle Plushie (velvet wool)",
-    "category": "Plushies",
-    "price": 299,
-    "image":"images/turtle.jpeg",
-    "description": "made from velvet finish wool. customization available",
-    "badge": "LIMITED TIME OFFER"
-  }
+ 
 const PASSWORD="welcome321";
 function readProducts(){try{const value=JSON.parse(localStorage.getItem("ywl_products_v2")||"null");return Array.isArray(value)?value:DEFAULT_PRODUCTS.map(p=>({...p}));}catch(e){return DEFAULT_PRODUCTS.map(p=>({...p}));}}
 let products=readProducts();
